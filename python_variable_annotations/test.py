@@ -1,5 +1,5 @@
-#!/usr/bin/env python3
-add = __import__('0-add').add
+to_kv = __import__('7-to_kv').to_kv
 
-print(add(1.11, 2.22) == 1.11 + 2.22)
-print(add.__annotations__)
+print(to_kv.__annotations__)
+print(to_kv("eggs", 3))
+print(to_kv("school", 0.02))
