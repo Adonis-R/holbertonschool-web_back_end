@@ -1,5 +1,3 @@
-to_kv = __import__('7-to_kv').to_kv
+element_length =  __import__('9-element_length').element_length
 
-print(to_kv.__annotations__)
-print(to_kv("eggs", 3))
-print(to_kv("school", 0.02))
+print(element_length.__annotations__)
