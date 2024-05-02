@@ -28,13 +28,13 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Get a page with pagination"""
-        assert type(page) == int and type(page_size) == int, "arg(s) of get_page != int"
+        assert isinstance(page, int) and isinstance(page_size, int) == int, "a"
         assert page > 0 and page_size > 0, "page and page_size must be > 0"
         start, end = index_range(page, page_size)
         idx = []
         self.dataset()
         for i in range(start, end):
-            try: 
+            try:
                 idx.append(self.__dataset[i])
             except IndexError as e:
                 return []
