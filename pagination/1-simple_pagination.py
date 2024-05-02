@@ -28,7 +28,7 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Get a page with pagination"""
-        assert isinstance(page, int) and isinstance(page_size, int) == int, "a"
+        assert isinstance(page, int) and isinstance(page_size, int), "a"
         assert page > 0 and page_size > 0, "page and page_size must be > 0"
         start, end = index_range(page, page_size)
         idx = []
