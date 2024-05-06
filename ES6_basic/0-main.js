@@ -1,3 +1,3 @@
-import { taskFirst, taskNext } from './0-constants.js';
+import concatArrays from './5-spread-operator.js';
 
-console.log(`${taskFirst()} ${taskNext()}`);
+console.log(concatArrays(['a', 'b'], ['c', 'd'], 'Hello'));
