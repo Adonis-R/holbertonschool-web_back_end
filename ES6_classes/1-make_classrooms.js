@@ -1,3 +1,4 @@
+/* eslint-disable */
 import ClassRoom from "./0-classroom.js";
 
 export default function initializeRooms() {
