@@ -3,7 +3,7 @@
 FIFOCache module that implements a caching system using FIFO
 """
 
-from caching.base_caching import BaseCaching
+from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):

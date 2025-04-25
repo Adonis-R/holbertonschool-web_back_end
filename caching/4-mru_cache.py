@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ MRUCache module
 """
-from caching.base_caching import BaseCaching
+from base_caching import BaseCaching
 
 
 class MRUCache(BaseCaching):

@@ -3,7 +3,7 @@
 LIFOCache module
 """
 
-from caching.base_caching import BaseCaching
+from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
