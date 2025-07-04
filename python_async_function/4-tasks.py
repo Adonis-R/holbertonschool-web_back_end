@@ -1,21 +1,13 @@
 #!/usr/bin/env python3
-""" Concurrent coroutines """
-
+"""Take the code from wait_n and alter it into
+a new function task_wait_n. The code is nearly identical
+to wait_n except task_wait_random is being called."""
 import asyncio
 from typing import List
-wait_random = __import__('0-basic_async_syntax').wait_random
 task_wait_random = __import__('3-tasks').task_wait_random
 
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
-    """ Returns list of delays in ascending order """
-    tasks = []
-    delays = []
-    for _ in range(n):
-        task = task_wait_random(max_delay)
-        tasks.append(task)
-
-    for task in tasks:
-        delays.append(await task)
-
+    """Spawn task_wait_random n times with the specified max_delay"""
+    delays = [await task_wait_random(max_delay) for _ in range(n)]
     return sorted(delays)

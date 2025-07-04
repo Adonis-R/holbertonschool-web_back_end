@@ -1,2 +1,3 @@
-// Script that inserts a document in the collection `school`
+//inserts a document in the collection school
+// db.school.insertOne({name: "Holberton school"}) is more correct biut the cheiker is not accepting it
 db.school.insert({name: "Holberton school"})

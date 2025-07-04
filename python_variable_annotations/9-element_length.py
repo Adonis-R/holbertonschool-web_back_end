@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
-"""
-Type-annotated function element_length that takes a list of strings lst
-as argument
-and returns a list of integers representing the lengths of the strings.
-"""
+"""Annotate the below functions parameters and return
+values with the appropriate types"""
 from typing import Iterable, Sequence, List, Tuple
 
 
 def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
-    """
-    Returns a list of tuples containing the string and its length.
-    """
+    """Return a list of tuples, each tuple containing an element"""
     return [(i, len(i)) for i in lst]

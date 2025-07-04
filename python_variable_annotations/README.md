@@ -1,1 +1,1 @@
-# python_variable_annotations
+In this directory you will find my work on variable annotation in python

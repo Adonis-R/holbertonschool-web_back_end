@@ -1,2 +1,2 @@
-// Script that lists all documents in the collection `school`
+//Lists all documents in the collection
 db.school.find()

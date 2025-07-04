@@ -1,2 +1,2 @@
-// Script that creates or uses a database `my_db`
+//creates or uses the database my_db
 use my_db

@@ -1,23 +1,24 @@
+/* eslint-disable */
 export default class Airport {
   constructor(name, code) {
-    this.name = name;
-    this.code = code;
+    this._name = name;
+    this._code = code;
+
+    if (typeof name !== 'string') {
+      throw new Error('Name is required');
+    }
+
+    if (typeof code !== 'string') {
+      throw new Error('Code is required');
+    }
   }
 
-  get name() {
+  getName() {
     return this._name;
   }
 
-  set name(newName) {
-    this._name = newName;
-  }
-
-  get code() {
+  getCode() {
     return this._code;
-  }
-
-  set code(newCode) {
-    this._code = newCode;
   }
 
   toString() {

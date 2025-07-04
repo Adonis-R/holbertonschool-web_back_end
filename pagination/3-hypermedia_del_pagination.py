@@ -40,21 +40,25 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """Get a page with pagination
+        """Return a dictionary with pagination information
         """
+
+        "Index must be a non-negative integer"
+        assert isinstance(index, int) and index >= 0
+
+        indexed_dataset = self.indexed_dataset()
+
+        # Get the data for the current page
         data = []
-        next_index = index
-        dataset = self.indexed_dataset()
-        assert index >= 0 and index < len(dataset)
-        for _ in range(index, (index + page_size)):
-            try:
-                data.append(dataset[next_index])
-            except Exception as e:
-                continue
-            next_index += 1
+        current_index = index
+        while len(data) < page_size and current_index in indexed_dataset:
+            data.append(indexed_dataset[current_index])
+            current_index += 1
+
+        # Build the response dictionary
         return {
             'index': index,
-            'next_index': next_index,
+            'data': data,
             'page_size': page_size,
-            'data': data
+            'next_index': current_index if len(data) == page_size else None
         }
