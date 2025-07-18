@@ -1,52 +1,56 @@
 #!/usr/bin/env python3
-"""Flask app for i18n.
-
-This module sets up a Flask application with Babel for internationalization.
-It includes configuration for supported languages, default
-locale, and timezone.
-"""
+""" Flask Babel app with template parameterization """
 
 from flask import Flask, render_template, request
-from flask_babel import Babel
-
-app = Flask(__name__)
+from flask_babel import Babel, _
 
 
 class Config:
-    """Configuration class for Flask app."""
+    """
+    Configuration class for Babel internationalization.
+
+    Attributes:
+        LANGUAGES (list): A list of supported languages for the application.
+        Default languages are English ('en') and French ('fr').
+        BABEL_DEFAULT_LOCALE (str): The default locale for the application.
+                                    Defaults to 'en' (English).
+        BABEL_DEFAULT_TIMEZONE (str): The default timezone for the application.
+                                      Defaults to 'UTC'.
+    """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
+app = Flask(__name__)
 app.config.from_object(Config)
-
-babel = Babel()
-
-
-def _(string):
-    """Translate string using gettext (alias)."""
-    from flask_babel import gettext
-    return gettext(string)
+babel = Babel(app)
 
 
 def get_locale():
-    """Determine the best match for supported languages."""
+    """
+    Determine the best match for supported languages.
+
+    This function uses the `Accept-Language` header from the request
+    to determine the best match for the supported languages defined
+    in the app configuration.
+    """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 babel.init_app(app, locale_selector=get_locale)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
-    """Render the index.html template for the root route."""
-    return render_template(
-        '0-index.html',
-        home_title=_('home_title'),
-        home_header=_('home_header')
-    )
+    """
+    Render the index page.
+
+    This function renders the `3-index.html` template, which uses
+    translations for the title and header.
+    """
+    return render_template('3-index.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

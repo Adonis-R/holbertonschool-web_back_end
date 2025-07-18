@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""flask app for i18n
-"""
+""" Flask babel app """
+
 from flask import Flask, render_template
 
 
 app = Flask(__name__)
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
-    """Render the index.html template for the root route."""
+    """Render the index page."""
     return render_template('0-index.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
